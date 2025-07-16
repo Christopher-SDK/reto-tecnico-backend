@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"users\/delete-users[1:3]","start":1752633422383,"end":1752633423004,"title":"users\/delete-users[1:3] 21:37:02.383-21:37:03.004 Eliminar usuario exitosamente o sin registros eliminados"},{"id":2,"group":1,"content":"users\/delete-users[2:10]","start":1752633423011,"end":1752633423390,"title":"users\/delete-users[2:10] 21:37:03.011-21:37:03.390 Intentar eliminar usuario con carrito asociado"},{"id":3,"group":1,"content":"users\/get-users[1:3]","start":1752633423632,"end":1752633424226,"title":"users\/get-users[1:3] 21:37:03.632-21:37:04.226 Obtener todos los usuarios exitosamente"},{"id":4,"group":1,"content":"users\/get_user_by_id[1:3]","start":1752633424294,"end":1752633424663,"title":"users\/get_user_by_id[1:3] 21:37:04.294-21:37:04.663 Buscar usuario por ID exitosamente"},{"id":5,"group":1,"content":"users\/get_user_by_id[2:19]","start":1752633424668,"end":1752633425041,"title":"users\/get_user_by_id[2:19] 21:37:04.668-21:37:05.041 Buscar usuario por ID que no existe"},{"id":6,"group":1,"content":"users\/post-users[1:6]","start":1752633425088,"end":1752633425467,"title":"users\/post-users[1:6] 21:37:05.088-21:37:05.467 Registrar usuario exitosamente"},{"id":7,"group":1,"content":"users\/post-users[2:23]","start":1752633425473,"end":1752633425824,"title":"users\/post-users[2:23] 21:37:05.473-21:37:05.824 Registrar usuario con email ya usado"},{"id":8,"group":1,"content":"users\/put-users[1:3]","start":1752633425871,"end":1752633426251,"title":"users\/put-users[1:3] 21:37:05.871-21:37:06.251 Editar usuario exitosamente"},{"id":9,"group":1,"content":"users\/put-users[2:20]","start":1752633426260,"end":1752633426634,"title":"users\/put-users[2:20] 21:37:06.260-21:37:06.634 Crear usuario si no existe (201)"},{"id":10,"group":1,"content":"users\/put-users[3:37]","start":1752633426638,"end":1752633427013,"title":"users\/put-users[3:37] 21:37:06.638-21:37:07.013 Error si email ya está usado"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
